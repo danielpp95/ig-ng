@@ -10,7 +10,6 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 export const firebaseConfig = {
   apiKey: "AIzaSyD8ksMXT4i-CVeJLRen3h7V60l6w5GHooo",
   authDomain: "ig-clone-cc4be.firebaseapp.com",
-import { Profile } from 'selenium-webdriver/firefox';
   databaseURL: "https://ig-clone-cc4be.firebaseio.com",
   projectId: "ig-clone-cc4be",
   storageBucket: "ig-clone-cc4be.appspot.com",
@@ -36,7 +35,10 @@ const appRoutes: Routes = [
     DashbardComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

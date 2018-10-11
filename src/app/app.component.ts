@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ig-clone';
+
+  isLogged = false;
+
+  constructor( private auth: AuthService ) {
+    auth.isLogged().subscribe(result=>{
+      ( result && result.uid ) ? this.isLogged = true : this.isLogged = false
+    }, err=>{
+      this.isLogged = false
+    })
+  }
+
+  public logout() {
+    this.auth.logout()
+  }
 }

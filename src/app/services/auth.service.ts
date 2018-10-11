@@ -8,7 +8,9 @@ import swal from 'sweetalert2'
 })
 export class AuthService {
 
-  constructor( private af: AngularFireAuth ) { }
+  constructor( private af: AngularFireAuth ) {
+    this.isLogged();
+  }
 
   private error = err => {
     swal({

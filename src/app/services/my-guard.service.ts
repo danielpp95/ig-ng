@@ -11,7 +11,7 @@ export class MyGuardService implements CanActivate {
 
   constructor( private auth: AuthService ) {
     auth.isLogged().subscribe(result=>{
-      this.isLogged = result.uid ? true : false
+      ( result && result.uid ) ? this.isLogged = true : this.isLogged = false
     }, err=>{
       this.isLogged = false
     })
